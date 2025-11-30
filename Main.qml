@@ -13,7 +13,7 @@ HusWindow{
     maximumWidth: 1080
     maximumHeight: 720
     title:"航班管理系统"
-    /* 首页左侧一栏，包含用户头像及各种功能选项*/
+    /* 首页左侧一栏，包含用户头像及各种功能选项 */
     ColumnLayout{
         width: 318
         anchors.left: parent.left
