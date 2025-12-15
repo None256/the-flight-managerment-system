@@ -6,7 +6,7 @@ ColumnLayout{
     Layout.fillHeight: true
     Layout.fillWidth: true
     Loader{
-        id:sharedcard
+        id:shared_card
         Layout.alignment: Qt.AlignHCenter
         Layout.fillHeight: true
         source: "../Components/SharedCard.qml"

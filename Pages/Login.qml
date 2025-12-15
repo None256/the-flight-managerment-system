@@ -885,6 +885,7 @@ Window {
         }
 
         //用户登录
+        success=4
         if(dynamicBackground.state===loginState)
         {
             if (success===4) {
