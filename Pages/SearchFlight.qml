@@ -46,7 +46,7 @@ ColumnLayout{
                 radiusBg.all: 5
                 iconSource: HusIcon.SearchOutlined
                 text: qsTr("搜索")
-                onClicked: {}
+                onClicked: searchFlight()
             }
         }
 
@@ -98,6 +98,18 @@ ColumnLayout{
     Item{
         Layout.fillHeight: true
         Layout.fillWidth: true
+    }
+
+    function searchFlight(){
+        //优先处理航班号
+        if(search_my_flight_input.text!==""){
+            let flight =DBManager.queryFlightByNum(search_my_flight_input.text)
+            return ;
+        }
+
+        //let flightList=
+
+
     }
 
 }
