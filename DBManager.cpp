@@ -555,8 +555,8 @@ QVariantList DBManager::queryFlightsByCondition(const QString& departure, const 
         flightMap["Flight_id"] = query.value("Flight_id").toString();
         flightMap["Departure"] = query.value("Departure").toString();
         flightMap["Destination"] = query.value("Destination").toString();
-        flightMap["depart_time"] = query.value("depart_time").toString();
-        flightMap["arrive_time"] = query.value("arrive_time").toString();
+        flightMap["depart_time"] = query.value("depart_time").toDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        flightMap["arrive_time"] = query.value("arrive_time").toDateTime().toString("yyyy-MM-dd HH:mm:ss");
         flightMap["price"] = query.value("price").toDouble();
         flightMap["total_seats"] = query.value("total_seats").toInt();
         flightMap["remain_seats"] = query.value("remain_seats").toInt();
