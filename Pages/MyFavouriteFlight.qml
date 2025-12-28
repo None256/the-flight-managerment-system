@@ -33,7 +33,7 @@ ColumnLayout{
         spacing: 5
         model: flightList
 
-        delegate: MyFavouriteFlight{
+        delegate: MyFavouriteFlightCard{
             required property var modelData
             height: 150
             card_data: {
