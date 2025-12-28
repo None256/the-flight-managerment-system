@@ -2056,7 +2056,7 @@ bool DBManager::updateUserIdCard(const QString& idCard)
         return false;
     }
 }
-int DBManager::createOrder(int userId, const QString &flightId, const QString &status)
+int DBManager::createOrder(int userId, const QString &flightId, const int status)
 {
     if (!m_db.isOpen()) {
         qCritical() << "数据库未连接";
