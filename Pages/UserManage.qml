@@ -28,8 +28,8 @@ ColumnLayout{
     ListView{
         Layout.fillHeight: true
         Layout.fillWidth: true
+        clip: true
         spacing: 5
-        clip:true
         model: userList
 
         delegate: UserCard{
