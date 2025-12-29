@@ -64,10 +64,7 @@ ColumnLayout{
             return false
         }
 
-        if (data.status === undefined || data.status === null) {
-            console.error("状态不能为空")
-            return false
-        }
+
 
         return true
     }
@@ -114,6 +111,7 @@ ColumnLayout{
                     width:200
                     Component.onCompleted: {
                         add_data.flight_id=""
+                        flight_idInput.text=""
                     }
                     onTextChanged: {
                         add_data.flight_id=flight_idInput.text
@@ -133,6 +131,7 @@ ColumnLayout{
                     width:200
                     Component.onCompleted: {
                         add_data.departure=""
+                        departureInput.text=""
                     }
                     onTextChanged: {
                         add_data.departure=departureInput.text
@@ -151,6 +150,7 @@ ColumnLayout{
                     width:200
                     Component.onCompleted: {
                         add_data.destination=""
+                        destinationInput.text=""
                     }
                     onTextChanged: {
                         add_data.destination=destinationInput.text
@@ -212,6 +212,7 @@ ColumnLayout{
                     //console.log(card_data.remain_seats)
                     Component.onCompleted: {
                         add_data.total_seats=""
+                        totalseatInput.text=""
                     }
                     onTextChanged: {
                         add_data.total_seats=totalseatInput.text
@@ -232,6 +233,7 @@ ColumnLayout{
                     //console.log(card_data.remain_seats)
                     Component.onCompleted: {
                         add_data.remain_seats=""
+                        remainseatInput.text=""
                     }
                     onTextChanged: {
                         add_data.remain_seats=remainseatInput.text
@@ -251,6 +253,7 @@ ColumnLayout{
 
                     Component.onCompleted: {
                         add_data.price=""
+                        priceInput.text=""
                     }
                     onTextChanged: {
                         add_data.price=priceInput.text
@@ -258,24 +261,7 @@ ColumnLayout{
                 }
             }
 
-            Row{
-                spacing:10
-                HusText{
-                    text:"航班状态:(0:准点,1:延误,2:取消)"
-                }
 
-                HusInput{
-                    id:statusInput
-                    width:200
-
-                    Component.onCompleted: {
-                        add_data.status=""
-                    }
-                    onTextChanged: {
-                        add_data.status=statusInput.text
-                    }
-                }
-            }
         }
 
         confirmText: "添加"
@@ -284,10 +270,23 @@ ColumnLayout{
             //非法输出检测
             if(!validateAddData(add_data))
             {
+                console.log("非法")
                 return ;
             }
 
-            DBManager.addFlight(add_data.flight_id,add_data.departute,add_data.destination,add_data.depart_time.add_data.arrive_time,add_data.price,add_data.total_seats,add_data.remain_seats,add_data.status)
+            let succ=DBManager.addFlight(add_data.flight_id,add_data.departure,add_data.destination,add_data.depart_time,add_data.arrive_time,add_data.price,add_data.total_seats,add_data.remain_seats)
+            if(!succ)
+            {
+                console.log("添加失败")
+                console.log(add_data.flight_id)
+                console.log(add_data.departure)
+                console.log(add_data.destination)
+                console.log(add_data.depart_time)
+                console.log(add_data.arrive_time)
+                console.log(add_data.price)
+                console.log(add_data.total_seats)
+                console.log(add_data.remain_seats)
+            }
 
             close()
         }
